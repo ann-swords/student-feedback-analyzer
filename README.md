@@ -1,1 +1,1 @@
-# student-feedback-anlyzer
+# Student Feedback Analyzer
