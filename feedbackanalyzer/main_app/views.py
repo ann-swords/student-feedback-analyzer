@@ -26,3 +26,18 @@ def login(request):
 
 def about(request):
   return render(request, 'about.html')
+
+
+
+# Units:
+def unit1(request):
+  return render(request, 'units/unit1.html')
+
+def unit2(request):
+  return render(request, 'units/unit2.html')
+
+def unit3(request):
+  return render(request, 'units/unit3.html')
+
+def unit4(request):
+  return render(request, 'units/unit4.html')
