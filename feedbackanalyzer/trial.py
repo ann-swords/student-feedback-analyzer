@@ -1,5 +1,10 @@
 from monkeylearn import MonkeyLearn
-ml = MonkeyLearn('370193db144a959e07e484106ffa2388496c9eac')
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
+
+ml = MonkeyLearn(env('MONKEY_LEARN_PASS'))
 model_id = 'cl_Jx8qzYJh'
 
 

@@ -3,11 +3,15 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Deliverable
 from django.http import HttpResponse
 from monkeylearn import MonkeyLearn
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
 
 # Create your views here.
 
 
-# ml = MonkeyLearn('370193db144a959e07e484106ffa2388496c9eac')
+# ml = MonkeyLearn(env('MONKEY_LEARN_PASS'))
 # a_data = Deliverable.objects.get(id=1)
 # response = ml.classifiers.classify(
 #     model_id='cl_NDBChtr7',
