@@ -1,6 +1,6 @@
 from monkeylearn import MonkeyLearn
 ml = MonkeyLearn('370193db144a959e07e484106ffa2388496c9eac')
-model_id = 'cl_NDBChtr7'
+model_id = 'cl_Jx8qzYJh'
 
 
 print("This program determines whether a text is positive, negative of neutral")

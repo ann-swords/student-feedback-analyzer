@@ -27,6 +27,14 @@ body {
   }
 
   .iconAdd{
-    width: 50px;
-    border: 20px;
+    width: 80px;
+    margin-left: 600px;
+  }
+
+  .unit1{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    margin-right: 30px;
   }
