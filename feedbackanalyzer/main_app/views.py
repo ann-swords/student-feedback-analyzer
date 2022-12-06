@@ -16,21 +16,15 @@ environ.Env.read_env()
 #   fields = ['name', 'breed', 'description', 'age']
 
 
-#   ml = MonkeyLearn(env('MONKEY_LEARN_PASS'))
-#   a_data = Deliverable.objects.latest('id')
-#   response = ml.classifiers.classify(
-#     model_id='cl_NDBChtr7',
-#     data=[
-#         a_data.comments
-#     ]
-# )
+
 #   analysis=response.body[0]['classifications'][0]['tag_name']
 
 # Classes:
 class DeliverableCreate(CreateView):
   model = Deliverable
   fields = ['units', 'hmwname', 'githubrepo', 'comments', 'date']
-  
+
+
 
 class DeliverableUpdate(UpdateView):
   model = Deliverable
@@ -87,6 +81,16 @@ def deliverable_detail(request, del_id):
 
 
 # function that analyzes the comments using sentiment analysis.
-# def analyzer(request):
-#   deliverables = Deliverable.objects.all()
-#   return render(request, 'deliverables/analyzer.html', {'analyze': response.body[0]['classifications'][0]['tag_name']})
+def analyzer(request):
+  ml = MonkeyLearn(env('MONKEY_LEARN_PASS'))
+  b_data = Deliverable.objects.latest('id')
+  response = ml.classifiers.classify(
+  model_id='cl_NDBChtr7',
+  data=[
+      b_data.comments
+  ]
+  )
+  b_data = b_data.id
+  a_data = Deliverable.objects.filter(id=b_data).update(analysis = response.body[0]['classifications'][0]['tag_name'])
+  # deliverables = Deliverable.objects.all()
+  return render(request, 'deliverables/analyzer.html', {'analyze': response.body[0]['classifications'][0]['tag_name']})
