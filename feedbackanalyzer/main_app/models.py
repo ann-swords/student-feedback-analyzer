@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from datetime import date
 # Create your models here.
 
@@ -10,22 +11,28 @@ UNITS = (
 )
 
 class Deliverable(models.Model):
-    date = models.DateField('deliverable Date')
+    date = models.DateField('deliverable Submission Date')
     units = models.CharField(
+        'Unit',
         max_length=1,
         choices = UNITS,
         default=UNITS[0][0]
     )
-    hmwname = models.CharField('homework Name', max_length=120)
+    hmwname = models.CharField('deliverable Name', max_length=120)
     githubrepo = models.CharField('github Repository Link', max_length=120)
     comments = models.CharField(max_length=300)
-
+    analysis = models.CharField(max_length=10)
+    
+    
     def __str__(self):
         return self.hmwname
 
     def __str__(self):
         # Nice method for obtaining the friendly value of a Field.choice
         return f"{self.get_units_display()} on {self.date}"
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'del_id': self.id})
 
     # change the default sort
     class Meta:

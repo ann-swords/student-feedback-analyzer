@@ -10,28 +10,35 @@ environ.Env.read_env()
 
 # Create your views here.
 
-
-# ml = MonkeyLearn(env('MONKEY_LEARN_PASS'))
-# a_data = Deliverable.objects.get(id=1)
-# response = ml.classifiers.classify(
-#     model_id='cl_NDBChtr7',
-#     data=[
-#         a_data.comments
-#     ]
-# )
-
-# print(response.body[0]['classifications'][0]['tag_name'])
-
 # Classes:
 # class deliverableCreate():
 #   model = Cat
 #   fields = ['name', 'breed', 'description', 'age']
 
 
+#   ml = MonkeyLearn(env('MONKEY_LEARN_PASS'))
+#   a_data = Deliverable.objects.latest('id')
+#   response = ml.classifiers.classify(
+#     model_id='cl_NDBChtr7',
+#     data=[
+#         a_data.comments
+#     ]
+# )
+#   analysis=response.body[0]['classifications'][0]['tag_name']
+
 # Classes:
 class DeliverableCreate(CreateView):
   model = Deliverable
-  fields = '__all__'
+  fields = ['units', 'hmwname', 'githubrepo', 'comments', 'date']
+  
+
+class DeliverableUpdate(UpdateView):
+  model = Deliverable
+  fields = ['units', 'hmwname', 'githubrepo', 'comments']
+
+class DeliverableDelete(DeleteView):
+  model = Deliverable
+  success_url = '/deliverables/'
 
 
 
@@ -74,7 +81,12 @@ def deliverables_index(request):
   deliverables = Deliverable.objects.all()
   return render(request, 'deliverables/index.html', {'deliverables': deliverables})
 
+def deliverable_detail(request, del_id):
+  deliverables = Deliverable.objects.get(id=del_id)
+  return render(request, 'deliverables/detail.html', {'deliverables': deliverables})
 
+
+# function that analyzes the comments using sentiment analysis.
 # def analyzer(request):
 #   deliverables = Deliverable.objects.all()
 #   return render(request, 'deliverables/analyzer.html', {'analyze': response.body[0]['classifications'][0]['tag_name']})

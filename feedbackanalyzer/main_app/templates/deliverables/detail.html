@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Deliverable Details</h1>
+
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">{{ deliverables.hmwname }}</span>
+    <p>Unit: {{ deliverables.units }}</p>
+    <p><a href="{{ deliverables.githubrepo }}">Github Repo Link</a></p>
+  </div>
+</div>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large  yellow darken-2">
+      <i class="large material-icons">settings</i>
+    </a>
+     <ul>
+      <li><a class="btn-floating red" href="{% url 'deliverable_delete' deliverables.id %}"><i class="material-icons">delete</i></a></li>
+      <li><a class="btn-floating light-green darken-2" href="{% url 'deliverable_update' deliverables.id %}"><i class="material-icons">edit</i></a></li>
+    </ul> 
+  </div>
+
+  <script>
+  
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.fixed-action-btn');
+        var instances = M.FloatingActionButton.init(elems, {
+          direction: 'up'
+        });
+      });
+    
+</script>
+
+{% endblock %}

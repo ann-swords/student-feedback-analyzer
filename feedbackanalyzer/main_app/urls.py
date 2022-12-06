@@ -12,8 +12,11 @@ urlpatterns = [
     path('units/unit4', views.unit4, name='unit4'),
 
     # Deliverables:
-    path('deliverables/', views.deliverables_index, name='deliverable_view'),
+    path('deliverables/', views.deliverables_index, name='index'),
+    path('deliverables/<int:del_id>/', views.deliverable_detail, name='detail'),
     path('deliverables/newDeliverable/', views.DeliverableCreate.as_view(), name='deliverable_create'),
+    path('deliverables/<int:pk>/update/', views.DeliverableUpdate.as_view(), name='deliverable_update'),
+    path('deliverables/<int:pk>/delete/', views.DeliverableDelete.as_view(), name='deliverable_delete'),
 
     # path('analyzer', views.analyzer, name='analyzer'),
 

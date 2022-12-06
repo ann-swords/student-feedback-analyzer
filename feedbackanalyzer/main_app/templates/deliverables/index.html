@@ -4,13 +4,16 @@
 <h1>My Deliverables</h1>
 
 {% for del in deliverables %}
-  <div class="card">
-    <div class="card-content">
-      <span class="card-title">{{ del.hmwname }}</span>
-      <p>Unit: {{ del.units }}</p>
-      <p>comments: {{ del.comments }}</p>
+<a href="/deliverables/{{ del.id }}">
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{ del.hmwname }}</span>
+            <p>Unit: {{ del.units }}</p>
+            <p>comments: {{ del.comments }}</p>
+        </div>
     </div>
-  </div>
+</a>
 {% endfor %}
 
 {% endblock %}
+
