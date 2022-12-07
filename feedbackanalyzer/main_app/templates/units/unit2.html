@@ -3,12 +3,53 @@
 {% block content %}
 <div class="unit1">
     <h1>Unit 2</h1>
-    <a href="/"><img src="https://i.imgur.com/ybXNAU6.png" class="iconAdd" /></a>
+    <a href="{% url 'deliverable_create' %}"><img src="https://i.imgur.com/ybXNAU6.png" class="iconAdd" /></a>
 </div>
 <hr />
 <div class="row">
     <div class="col s6">
         <h3>Content</h3>
+
+        <div class="card">
+            <div class="card-image">
+              <img class="imageCard" src="https://i.imgur.com/yRIGAMO.png">
+              <span class="card-title" id="titleCard">APIs</span>
+            </div>
+            <div class="card-content">
+              <p>Get to know the world of APIs.</p>
+            </div>
+            <div class="card-action">
+              <a href="https://gasei.gitbook.io/sei/00readme" target="_blank">Take me there</a>
+            </div>
+          </div>
+       
+
+          <div class="card">
+            <div class="card-image">
+              <img class="imageCard" src="https://i.imgur.com/yBabMRK.png">
+              <span class="card-title" id="titleCard">Databases</span>
+            </div>
+            <div class="card-content">
+              <p>Storing large amounts of persistent data is an important aspect of nearly every full-stack web application. Initially, we'll go over relational databases, which are the most widely used type of database. We'll be using SQL, which is the most popular query language for interacting with relational databases.</p>
+            </div>
+            <div class="card-action">
+              <a href="https://gasei.gitbook.io/sei/04-databases" target="_blank">Take me there</a>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-image">
+              <img class="imageCard" src="https://i.imgur.com/VDUdsL1.png">
+              <span class="card-title" id="titleCard">Node/Express</span>
+            </div>
+            <div class="card-content">
+              <p>Node is a runtime environment for running JavaScript, and it allows us to create applications where both the client and server use JavaScript. Specifically, we'll use a web framework called Express in order to create a secure web server that interacts with a database.</p>
+            </div>
+            <div class="card-action">
+              <a href="https://gasei.gitbook.io/sei/05-node-express" target="_blank">Take me there</a>
+            </div>
+          </div>
     </div>
 
     <div class="col s6">
