@@ -22,7 +22,7 @@
     </div>
   
     <div class="col s6">
-        <h3>Pie Charts</h3>
+        <h3>Chart</h3>
         <div>
           <canvas id="myChart"></canvas>
         </div>
@@ -32,17 +32,23 @@
           const ctx = document.getElementById('myChart');
         
           new Chart(ctx, {
-            type: 'pie',
+            type: 'bar',
             data: {
               labels: ['Positive', 'Negative'],
               datasets: [{
                 label: '# of Feedbacks',
                 data: ['{{unit1_pos}}', '{{unit1_neg}}'],
                 backgroundColor:[
-                  'rgba(54, 162, 135, 1)',
-                  'rgb(246, 32, 29, 1)',
+                  'rgba(54, 162, 135, 0.3)',
+                  'rgb(255, 99, 132, 0.3)',
                   'rgba(255, 206, 86, 1)',
                   ],
+
+                  borderColor: [
+                  'rgba(54, 162, 135)',
+                  'rgb(255, 99, 132)',
+                  'rgba(255, 206, 86, 1)',
+                ],
   
                 borderWidth: 1
               }]

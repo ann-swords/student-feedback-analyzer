@@ -66,3 +66,18 @@ footer.page-footer {
   width: 100%;
   height: 400px;
 }
+
+.form1{
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  height: 500px;
+}
+
+.submitt{
+  margin: 20px;
+  margin-left: 45%;
+  background-color: #f6201d;
+}
+.submitt:hover{
+  background-color: #f09897;
+}

@@ -21,7 +21,7 @@
     </div>
   
     <div class="col s6">
-        <h3>Pie Charts</h3>
+        <h3>Chart</h3>
         <div>
           <canvas id="myChart"></canvas>
         </div>
@@ -31,16 +31,15 @@
           const ctx = document.getElementById('myChart');
         
           new Chart(ctx, {
-            type: 'pie',
+            type: 'doughnut',
             data: {
               labels: ['Positive', 'Negative'],
               datasets: [{
                 label: '# of Feedbacks',
                 data: ['{{unit3_pos}}', '{{unit3_neg}}'],
                 backgroundColor:[
-                  'rgba(54, 162, 135, 1)',
-                  'rgb(246, 32, 29, 1)',
-                  'rgba(255, 206, 86, 1)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
                   ],
   
                 borderWidth: 1
