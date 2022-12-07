@@ -51,8 +51,17 @@ footer.page-footer {
 #titleCard{
   font-weight: bolder;
   text-shadow: 1px 1px 2px white;
+  color: red;
 }
 
-.imageCard{
-  height: 90%;
+.units{
+  width: 50%;
+}
+
+.unitsContiner{
+  display: flex;
+}
+
+.homeImg{
+  width: 50%;
 }
