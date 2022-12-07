@@ -27,6 +27,32 @@ footer.page-footer {
 }
 
 .iconAdd{
-  width: 50px;
-  border: 20px;
+  width: 80px;
+  margin-left: 600px;
+}
+
+.unit1{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  margin-right: 30px;
+}
+
+.fixed-action-btn {
+  position: fixed;
+  right: 23px;
+  bottom: 50px;
+  padding-top: 15px;
+  margin-bottom: 0;
+  z-index: 997;
+}
+
+#titleCard{
+  font-weight: bolder;
+  text-shadow: 1px 1px 2px white;
+}
+
+.imageCard{
+  height: 90%;
 }

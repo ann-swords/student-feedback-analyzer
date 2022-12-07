@@ -84,15 +84,32 @@ def analyzer(request):
   a_data = Deliverable.objects.filter(id=b_data).update(analysis = response.body[0]['classifications'][0]['tag_name'])
   # deliverables = Deliverable.objects.all()
 
+# Counting each unit's positive and negative homeworks.
+# UNIT1
   unit1_pos = Deliverable.objects.filter(units='1', analysis='positive').count()
   unit1_pos = int(unit1_pos)
 
   unit1_neg = Deliverable.objects.filter(units='1', analysis='negative').count()
   unit1_neg = int(unit1_neg)
+# UNIT2
+  unit2_pos = Deliverable.objects.filter(units='2', analysis='positive').count()
+  unit2_pos = int(unit2_pos)
 
-  unit2 = Deliverable.objects.filter(units='2')
-  unit3 = Deliverable.objects.filter(units='3')
-  unit4 = Deliverable.objects.filter(units='4')
+  unit2_neg = Deliverable.objects.filter(units='2', analysis='negative').count()
+  unit2_neg = int(unit2_neg)
+  # UNIT3
+  unit3_pos = Deliverable.objects.filter(units='3', analysis='positive').count()
+  unit3_pos = int(unit3_pos)
 
-  return render(request, 'deliverables/analyzer.html', {'analyze': response.body[0]['classifications'][0]['tag_name'], 'unit1_pos': unit1_pos, 'unit1_neg': unit1_neg, 'unit2': unit2, 'unit3': unit3, 'unit4': unit4})
+  unit3_neg = Deliverable.objects.filter(units='3', analysis='negative').count()
+  unit3_neg = int(unit3_neg)
+  # UNIT4
+  unit4_pos = Deliverable.objects.filter(units='4', analysis='positive').count()
+  unit4_pos = int(unit4_pos)
+
+  unit4_neg = Deliverable.objects.filter(units='4', analysis='negative').count()
+  unit4_neg = int(unit4_neg)
+
+
+  return render(request, 'deliverables/analyzer.html', {'unit1_pos': unit1_pos, 'unit1_neg': unit1_neg, 'unit2_pos': unit2_pos, 'unit2_neg': unit2_neg, 'unit3_pos': unit3_pos, 'unit3_neg': unit3_neg, 'unit4_pos': unit4_pos, 'unit4_neg': unit4_neg,})
 

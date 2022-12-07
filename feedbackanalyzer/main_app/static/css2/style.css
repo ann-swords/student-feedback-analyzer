@@ -47,3 +47,14 @@ footer.page-footer {
   margin-bottom: 0;
   z-index: 997;
 }
+
+#titleCard{
+  font-weight: bolder;
+  text-shadow: 1px 1px 2px white;
+  color: red;
+}
+
+
+.card .card-image img {
+  width: 100%;
+}
