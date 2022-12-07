@@ -54,7 +54,10 @@ footer.page-footer {
   color: red;
 }
 
+.units{
+  width: 50%;
+}
 
-.card .card-image img {
-  width: 100%;
+.unitsContiner{
+  display: flex;
 }
