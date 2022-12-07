@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="row">
+    <h2>Unit1:</h2>
+    <div class="col s6">
+        <h3>Data</h3>
+        <div class="card">
+          <div class="card-content">
+            <ul>
+              <p>Unit 1 Feedback</p>
+            {% comment %} {% for unit1 in unit1 %} {% endcomment %}
+              <li>Positive Comments: {{unit1_pos}}</li>
+              <li>Negative Comments: {{unit1_neg}}</li>
+            {% comment %} {% endfor %} {% endcomment %}
+            </ul>
+  
+          </div>
+        </div>
+  
+    </div>
+  
+    <div class="col s6">
+        <h3>Pie Charts</h3>
+        <div>
+          <canvas id="myChart"></canvas>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+          const ctx = document.getElementById('myChart');
+        
+          new Chart(ctx, {
+            type: 'pie',
+            data: {
+              labels: ['Positive', 'Negative'],
+              datasets: [{
+                label: '# of Feedbacks',
+                data: ['{{unit1_pos}}', '{{unit1_neg}}'],
+                backgroundColor:[
+                  'rgba(54, 162, 135, 1)',
+                  'rgb(246, 32, 29, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  ],
+  
+                borderWidth: 1
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+          
+        </script>
+    </div>
+  </div>  
+  
+  {% endblock %}

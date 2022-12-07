@@ -72,6 +72,11 @@ def deliverable_detail(request, del_id):
 
 # function that analyzes the comments using sentiment analysis.
 def analyzer(request):
+  unit1 = int(Deliverable.objects.filter(units='1').count())
+  unit2 = int(Deliverable.objects.filter(units='2').count())
+  unit3 = int(Deliverable.objects.filter(units='3').count())
+  unit4 = int(Deliverable.objects.filter(units='4').count())
+
   ml = MonkeyLearn(env('MONKEY_LEARN_PASS'))
   b_data = Deliverable.objects.latest('id')
   response = ml.classifiers.classify(
@@ -84,32 +89,47 @@ def analyzer(request):
   a_data = Deliverable.objects.filter(id=b_data).update(analysis = response.body[0]['classifications'][0]['tag_name'])
   # deliverables = Deliverable.objects.all()
 
-# Counting each unit's positive and negative homeworks.
+  return render(request, 'deliverables/analyzer.html', {'unit1':unit1, 'unit2':unit2, 'unit3':unit3, 'unit4':unit4})
+
+
+# Counting each unit's positive and negative homeworks.(through charts)
 # UNIT1
+def unit1_feedback(request):
   unit1_pos = Deliverable.objects.filter(units='1', analysis='positive').count()
   unit1_pos = int(unit1_pos)
 
   unit1_neg = Deliverable.objects.filter(units='1', analysis='negative').count()
   unit1_neg = int(unit1_neg)
-# UNIT2
+
+  return render(request, 'deliverables/analyze_unit1.html', {'unit1_pos': unit1_pos, 'unit1_neg': unit1_neg})
+
+
+  # UNIT2
+def unit2_feedback(request):
   unit2_pos = Deliverable.objects.filter(units='2', analysis='positive').count()
   unit2_pos = int(unit2_pos)
 
   unit2_neg = Deliverable.objects.filter(units='2', analysis='negative').count()
   unit2_neg = int(unit2_neg)
-  # UNIT3
+
+  return render(request, 'deliverables/analyze_unit2.html', {'unit2_pos': unit2_pos, 'unit2_neg': unit2_neg})
+
+ # UNIT3
+def unit3_feedback(request):
   unit3_pos = Deliverable.objects.filter(units='3', analysis='positive').count()
   unit3_pos = int(unit3_pos)
 
   unit3_neg = Deliverable.objects.filter(units='3', analysis='negative').count()
   unit3_neg = int(unit3_neg)
-  # UNIT4
+
+  return render(request, 'deliverables/analyze_unit3.html', {'unit3_pos': unit3_pos, 'unit3_neg': unit3_neg})
+
+   # UNIT4
+def unit4_feedback(request):
   unit4_pos = Deliverable.objects.filter(units='4', analysis='positive').count()
   unit4_pos = int(unit4_pos)
 
   unit4_neg = Deliverable.objects.filter(units='4', analysis='negative').count()
   unit4_neg = int(unit4_neg)
 
-
-  return render(request, 'deliverables/analyzer.html', {'unit1_pos': unit1_pos, 'unit1_neg': unit1_neg, 'unit2_pos': unit2_pos, 'unit2_neg': unit2_neg, 'unit3_pos': unit3_pos, 'unit3_neg': unit3_neg, 'unit4_pos': unit4_pos, 'unit4_neg': unit4_neg,})
-
+  return render(request, 'deliverables/analyze_unit4.html', {'unit4_pos': unit4_pos, 'unit4_neg': unit4_neg})

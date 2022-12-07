@@ -18,7 +18,12 @@ urlpatterns = [
     path('deliverables/<int:pk>/update/', views.DeliverableUpdate.as_view(), name='deliverable_update'),
     path('deliverables/<int:pk>/delete/', views.DeliverableDelete.as_view(), name='deliverable_delete'),
 
+    # Feedback Analysis:
     path('analyzer', views.analyzer, name='analyzer'),
+    path('analyzer/unit1', views.unit1_feedback, name='analyzer_unit1'),
+    path('analyzer/unit2', views.unit2_feedback, name='analyzer_unit2'),
+    path('analyzer/unit3', views.unit3_feedback, name='analyzer_unit3'),
+    path('analyzer/unit4', views.unit4_feedback, name='analyzer_unit4'),
 
 
     # Auth:
