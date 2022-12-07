@@ -1,16 +1,97 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Text analyzer</h1>
+<h1>Deliverable Feedback analyzer</h1>
 
-{% comment %} {% for an in analyze %} {% endcomment %}
-  <div class="card">
-    <div class="card-content">
 
-      <span class="card-title">{{ analyze }}</span>
-    </div>
+<div class="row">
+  <div class="col s6">
+      <h3>Data</h3>
+      <div class="card">
+        <div class="card-content">
+          
+          <span class="card-title">{{ analyze }}</span>
+          <ul>
+            <p>Unit 1 Feedback</p>
+          {% for unit1 in unit1 %}
+            <li>comments: {{unit1.analysis}}</li>
+          {% endfor %}
+          </ul>
+      
+      
+          <ul>
+            <p>Unit 2 Feedback</p>
+            {% for unit2 in unit2 %}
+              {% comment %} <li>comments: {{unit2.analysis}}</li> {% endcomment %}
+              {%if unit2.analysis == 'positive'%}
+                <p>1</p>
+              {% elif unit2.analysis == 'negative' %}
+                <p>-1</p>
+              {% else %}
+                <p>0</p>
+              {% endif %}
+            {% endfor %}
+            </ul>
+      
+      
+            <ul>
+              <p>Unit 3 Feedback</p>
+              {% for unit3 in unit3 %}
+                <li>comments: {{unit3.analysis}}</li>
+              {% endfor %}
+              </ul>
+      
+      
+              <ul>
+                <p>Unit 4 Feedback</p>
+                {% for unit4 in unit4 %}
+                  <li>comments: {{unit4.analysis}}</li>
+                {% endfor %}
+                </ul>
+          </div>
+      </div>
+
+
   </div>
-  {% comment %} {% endfor %} {% endcomment %}
+
+  <div class="col s6">
+      <h3>Pie Charts</h3>
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
+      
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      
+      <script>
+        const ctx = document.getElementById('myChart');
+      
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+              label: '# of Votes',
+              data: [12, 19, 3, 5, 2, 3],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
+      
+      
+  </div>
+
+  
+</div>
+
+  
 
 
 {% endblock %}
