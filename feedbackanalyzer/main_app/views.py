@@ -101,7 +101,12 @@ def unit1_feedback(request):
   unit1_neg = Deliverable.objects.filter(units='1', analysis='negative').count()
   unit1_neg = int(unit1_neg)
 
-  return render(request, 'deliverables/analyze_unit1.html', {'unit1_pos': unit1_pos, 'unit1_neg': unit1_neg})
+  unit1 = Deliverable.objects.filter(units='1')
+
+  unit1_nat = Deliverable.objects.filter(units='1', analysis='neutral').count()
+  unit1_nat = int(unit1_nat)
+
+  return render(request, 'deliverables/analyze_unit1.html', {'unit1_pos': unit1_pos, 'unit1_neg': unit1_neg, 'unit1':unit1, 'unit1_nat':unit1_nat})
 
 
   # UNIT2
@@ -112,7 +117,12 @@ def unit2_feedback(request):
   unit2_neg = Deliverable.objects.filter(units='2', analysis='negative').count()
   unit2_neg = int(unit2_neg)
 
-  return render(request, 'deliverables/analyze_unit2.html', {'unit2_pos': unit2_pos, 'unit2_neg': unit2_neg})
+  unit2_nat = Deliverable.objects.filter(units='2', analysis='neutral').count()
+  unit2_nat = int(unit2_nat)
+
+  unit2 = Deliverable.objects.filter(units='2')
+
+  return render(request, 'deliverables/analyze_unit2.html', {'unit2_pos': unit2_pos, 'unit2_neg': unit2_neg, 'unit2_nat':unit2_nat, 'unit2':unit2})
 
  # UNIT3
 def unit3_feedback(request):
@@ -122,7 +132,12 @@ def unit3_feedback(request):
   unit3_neg = Deliverable.objects.filter(units='3', analysis='negative').count()
   unit3_neg = int(unit3_neg)
 
-  return render(request, 'deliverables/analyze_unit3.html', {'unit3_pos': unit3_pos, 'unit3_neg': unit3_neg})
+  unit3_nat = Deliverable.objects.filter(units='3', analysis='neutral').count()
+  unit3_nat = int(unit3_nat)
+
+  unit3 = Deliverable.objects.filter(units='3')
+
+  return render(request, 'deliverables/analyze_unit3.html', {'unit3_pos': unit3_pos, 'unit3_neg': unit3_neg, 'unit3_nat':unit3_nat, 'unit3':unit3})
 
    # UNIT4
 def unit4_feedback(request):
@@ -132,4 +147,9 @@ def unit4_feedback(request):
   unit4_neg = Deliverable.objects.filter(units='4', analysis='negative').count()
   unit4_neg = int(unit4_neg)
 
-  return render(request, 'deliverables/analyze_unit4.html', {'unit4_pos': unit4_pos, 'unit4_neg': unit4_neg})
+  unit4_nat = Deliverable.objects.filter(units='4', analysis='neutral').count()
+  unit4_nat = int(unit4_nat)
+
+  unit4 = Deliverable.objects.filter(units='4')
+
+  return render(request, 'deliverables/analyze_unit4.html', {'unit4_pos': unit4_pos, 'unit4_neg': unit4_neg, 'unit4_nat':unit4_nat, 'unit4':unit4})

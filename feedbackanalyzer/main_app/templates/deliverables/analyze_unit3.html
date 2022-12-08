@@ -12,7 +12,16 @@
             {% comment %} {% for unit1 in unit1 %} {% endcomment %}
               <li>Positive Comments: {{unit3_pos}}</li>
               <li>Negative Comments: {{unit3_neg}}</li>
+              <li>Neutral Comments: {{unit3_nat}}</li>
             {% comment %} {% endfor %} {% endcomment %}
+            </ul>
+
+
+            <ul>
+              <p>Github Repositories:</p>
+             {% for del in unit3 %}
+              <li><a href="{{del.githubrepo}}" target="_blank">{{del.githubrepo}}</li>
+             {% endfor %}
             </ul>
   
           </div>
@@ -33,13 +42,14 @@
           new Chart(ctx, {
             type: 'doughnut',
             data: {
-              labels: ['Positive', 'Negative'],
+              labels: ['Positive', 'Negative', 'Neutral'],
               datasets: [{
                 label: '# of Feedbacks',
-                data: ['{{unit3_pos}}', '{{unit3_neg}}'],
+                data: ['{{unit3_pos}}', '{{unit3_neg}}', '{{unit3_nat}}'],
                 backgroundColor:[
                 'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)'
+                'rgb(246, 32, 29, 1)',
+                'rgba(255, 206, 86, 1)',
                   ],
   
                 borderWidth: 1

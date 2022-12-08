@@ -10,10 +10,17 @@
           <div class="card-content">
             <ul>
               <p>Unit 1 Feedback</p>
-            {% comment %} {% for unit1 in unit1 %} {% endcomment %}
               <li>Positive Comments: {{unit1_pos}}</li>
               <li>Negative Comments: {{unit1_neg}}</li>
-            {% comment %} {% endfor %} {% endcomment %}
+              <li>Neutral Comments: {{unit1_nat}}</li>
+            </ul>
+
+
+            <ul>
+              <p>Github Repositories:</p>
+             {% for del in unit1 %}
+              <li><a href="{{del.githubrepo}}" target="_blank">{{del.githubrepo}}</li>
+             {% endfor %}
             </ul>
   
           </div>
@@ -34,20 +41,20 @@
           new Chart(ctx, {
             type: 'bar',
             data: {
-              labels: ['Positive', 'Negative'],
+              labels: ['Positive', 'Negative', 'Neutral'],
               datasets: [{
                 label: '# of Feedbacks',
-                data: ['{{unit1_pos}}', '{{unit1_neg}}'],
+                data: ['{{unit1_pos}}', '{{unit1_neg}}', '{{unit1_nat}}'],
                 backgroundColor:[
                   'rgba(54, 162, 135, 0.3)',
                   'rgb(255, 99, 132, 0.3)',
-                  'rgba(255, 206, 86, 1)',
+                  'rgba(255, 206, 86, 0.3)',
                   ],
 
                   borderColor: [
                   'rgba(54, 162, 135)',
                   'rgb(255, 99, 132)',
-                  'rgba(255, 206, 86, 1)',
+                  'rgba(255, 206, 86, 1',
                 ],
   
                 borderWidth: 1

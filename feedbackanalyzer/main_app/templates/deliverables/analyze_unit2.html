@@ -12,8 +12,18 @@
             {% comment %} {% for unit1 in unit1 %} {% endcomment %}
               <li>Positive Comments: {{unit2_pos}}</li>
               <li>Negative Comments: {{unit2_neg}}</li>
+              <li>Neutral Comments: {{unit2_nat}}</li>
             {% comment %} {% endfor %} {% endcomment %}
             </ul>
+
+
+            <ul>
+              <p>Github Repositories:</p>
+             {% for del in unit2 %}
+              <li><a href="{{del.githubrepo}}" target="_blank">{{del.githubrepo}}</li>
+             {% endfor %}
+            </ul>
+
   
           </div>
         </div>
@@ -33,10 +43,10 @@
           new Chart(ctx, {
             type: 'pie',
             data: {
-              labels: ['Positive', 'Negative'],
+              labels: ['Positive', 'Negative', 'Neutral'],
               datasets: [{
                 label: '# of Feedbacks',
-                data: ['{{unit2_pos}}', '{{unit2_neg}}'],
+                data: ['{{unit2_pos}}', '{{unit2_neg}}', '{{unit2_nat}}'],
                 backgroundColor:[
                   'rgba(54, 162, 135, 1)',
                   'rgb(246, 32, 29, 1)',

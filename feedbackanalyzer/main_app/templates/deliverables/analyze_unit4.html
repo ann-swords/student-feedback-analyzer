@@ -12,7 +12,17 @@
             {% comment %} {% for unit1 in unit1 %} {% endcomment %}
               <li>Positive Comments: {{unit4_pos}}</li>
               <li>Negative Comments: {{unit4_neg}}</li>
+              <li>Natural Comments: {{unit4_nat}}</li>
             {% comment %} {% endfor %} {% endcomment %}
+            </ul>
+
+
+
+            <ul>
+              <p>Github Repositories:</p>
+             {% for del in unit4 %}
+              <li><a href="{{del.githubrepo}}" target="_blank">{{del.githubrepo}}</li>
+             {% endfor %}
             </ul>
   
           </div>
@@ -33,13 +43,14 @@
           new Chart(ctx, {
             type: 'polarArea',
             data: {
-              labels: ['Positive', 'Negative'],
+              labels: ['Positive', 'Negative', 'Neutral'],
               datasets: [{
                 label: '# of Feedbacks',
-                data: ['{{unit4_pos}}', '{{unit4_neg}}'],
+                data: ['{{unit4_pos}}', '{{unit4_neg}}', '{{unit4_nat}}' ],
                 backgroundColor:[
                   'rgb(255, 99, 132)',
                   'rgb(75, 192, 192)',
+                  'rgba(255, 206, 86, 1)',
                   ],
   
                 borderWidth: 1
