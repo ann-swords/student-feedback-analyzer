@@ -42,6 +42,7 @@
     <div class="col s6">
         <h3>My Submitted Deliverables</h3>
         {% for del in deliverables %}
+        <a href="/deliverables/{{ del.id }}">
         <div class="card">
             <div class="card-content">
             <span class="card-title">{{ del.hmwname }}</span>
@@ -49,6 +50,7 @@
             <p>comments: {{ del.comments }}</p>
             </div>
         </div>
+      </a>
         {% endfor %}
     </div>
 
