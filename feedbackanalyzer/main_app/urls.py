@@ -25,8 +25,6 @@ urlpatterns = [
     path('analyzer/unit3', views.unit3_feedback, name='analyzer_unit3'),
     path('analyzer/unit4', views.unit4_feedback, name='analyzer_unit4'),
 
-
-    # Auth:
-    path('accounts/signup/', views.signup, name='signup'),
-    path('accounts/login/', views.login, name='login'),
+    # Auth, Sign Up:  
+    path('accounts/signup', views.signup, name='signup')
 ]

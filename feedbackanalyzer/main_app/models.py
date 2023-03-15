@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from datetime import date
+from django.contrib.auth.models import User
 # Create your models here.
 
 UNITS = (
@@ -22,6 +23,8 @@ class Deliverable(models.Model):
     githubrepo = models.CharField('github Repository Link', max_length=120)
     comments = models.CharField(max_length=300)
     analysis = models.CharField(max_length=10)
+     # Add the foreign key linking to a user instance
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     
     
     def __str__(self):
