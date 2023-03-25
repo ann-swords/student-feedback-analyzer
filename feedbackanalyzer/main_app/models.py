@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from datetime import date
 from django.contrib.auth.models import User
+
 # Create your models here.
 
 UNITS = (
@@ -22,7 +23,7 @@ class Deliverable(models.Model):
     hmwname = models.CharField('deliverable Name', max_length=120)
     githubrepo = models.CharField('github Repository Link', max_length=120)
     comments = models.CharField(max_length=300)
-    analysis = models.CharField(max_length=10)
+    # analysis = models.CharField(max_length=10)
      # Add the foreign key linking to a user instance
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     
@@ -40,3 +41,8 @@ class Deliverable(models.Model):
     # change the default sort
     class Meta:
         ordering = ['-date']
+
+class AnalyzedData(models.Model):
+    deliverable = models.ForeignKey(Deliverable, on_delete=models.CASCADE)
+    analysis = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)

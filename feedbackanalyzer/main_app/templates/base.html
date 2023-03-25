@@ -21,15 +21,19 @@
           <li><a href="/" class="left brand-logo"><img class="logo" src="https://i.imgur.com/FHqr8tg.png"></a></li>
         </ul>
         <ul class="right">
-            <li><a href="/about">About</a></li>
-            {% if user.is_authenticated %}
-            <li><a href="{% url 'index' %}">View All Deliverables</a></li>
-            <li><a href="{% url 'analyzer' %}">Deliverables Feedback Analyzer</a></li>
-            <li><a href="{% url 'logout' %}">Log Out</a></li>
-            {% else %}
-            <li><a href="{% url 'login' %}">Sign In</a></li>
-            <li><a href="{% url 'signup' %}">Sign Up</a></li>
-            {% endif%}
+          {% if user.is_superuser %}
+          <li>Welcome Instructor {{ user.username}}</li>
+          <li><a href="{% url 'analyzer' %}">Deliverables Feedback Analyzer</a></li>
+          <li><a href="{% url 'logout' %}">Log Out</a></li> 
+          {% elif user.is_authenticated%}
+          <li>Welcome Student {{ user.username}}</li>
+          <li><a href="{% url 'index' %}">My Deliverables</a></li>
+          <li><a href="{% url 'logout' %}">Log Out</a></li> 
+          {% else %}
+          <li><a href="{% url 'login' %}">Sign In</a></li>
+          <li><a href="{% url 'signup' %}">Sign Up</a></li>
+          {% endif%}
+          <li><a href="/about">About</a></li>
           
         
 

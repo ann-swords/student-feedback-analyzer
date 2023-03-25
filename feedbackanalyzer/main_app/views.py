@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Deliverable
+from .models import Deliverable, AnalyzedData
 from django.http import HttpResponse
 from monkeylearn import MonkeyLearn
 import environ
@@ -10,6 +10,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 # Import the decorators for Class based Views only
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils import timezone
 
 env = environ.Env()
 environ.Env.read_env()
@@ -93,7 +94,10 @@ def analyzer(request):
   ]
   )
   b_data = b_data.id
-  a_data = Deliverable.objects.filter(id=b_data).update(analysis = response.body[0]['classifications'][0]['tag_name'])
+  analysis = response.body[0]['classifications'][0]['tag_name']
+  analyzed_data = AnalyzedData(deliverable_id=b_data, analysis=analysis, created_at=timezone.now())
+  analyzed_data.save()
+  # a_data = Deliverable.objects.filter(id=b_data).update(analysis = response.body[0]['classifications'][0]['tag_name'])
   # deliverables = Deliverable.objects.all()
 
   return render(request, 'deliverables/analyzer.html', {'unit1':unit1, 'unit2':unit2, 'unit3':unit3, 'unit4':unit4})
@@ -102,29 +106,30 @@ def analyzer(request):
 # Counting each unit's positive and negative homeworks.(through charts)
 # UNIT1
 def unit1_feedback(request):
-  unit1_pos = Deliverable.objects.filter(units='1', analysis='positive').count()
+  unit1_pos = AnalyzedData.objects.filter(deliverable__units='1', analysis='positive').count()
   unit1_pos = int(unit1_pos)
 
-  unit1_neg = Deliverable.objects.filter(units='1', analysis='negative').count()
+  unit1_neg = AnalyzedData.objects.filter(deliverable__units='1', analysis='negative').count()
   unit1_neg = int(unit1_neg)
 
-  unit1 = Deliverable.objects.filter(units='1')
 
-  unit1_nat = Deliverable.objects.filter(units='1', analysis='neutral').count()
+  unit1_nat = AnalyzedData.objects.filter(deliverable__units='1', analysis='neutral').count()
   unit1_nat = int(unit1_nat)
+
+  unit1 = Deliverable.objects.filter(units='1')
 
   return render(request, 'deliverables/analyze_unit1.html', {'unit1_pos': unit1_pos, 'unit1_neg': unit1_neg, 'unit1':unit1, 'unit1_nat':unit1_nat})
 
 
   # UNIT2
 def unit2_feedback(request):
-  unit2_pos = Deliverable.objects.filter(units='2', analysis='positive').count()
+  unit2_pos = AnalyzedData.objects.filter(deliverable__units='2', analysis='positive').count()
   unit2_pos = int(unit2_pos)
 
-  unit2_neg = Deliverable.objects.filter(units='2', analysis='negative').count()
+  unit2_neg = AnalyzedData.objects.filter(deliverable__units='2', analysis='negative').count()
   unit2_neg = int(unit2_neg)
 
-  unit2_nat = Deliverable.objects.filter(units='2', analysis='neutral').count()
+  unit2_nat = AnalyzedData.objects.filter(deliverable__units='2', analysis='neutral').count()
   unit2_nat = int(unit2_nat)
 
   unit2 = Deliverable.objects.filter(units='2')
@@ -133,13 +138,13 @@ def unit2_feedback(request):
 
  # UNIT3
 def unit3_feedback(request):
-  unit3_pos = Deliverable.objects.filter(units='3', analysis='positive').count()
+  unit3_pos = AnalyzedData.objects.filter(deliverable__units='3', analysis='positive').count()
   unit3_pos = int(unit3_pos)
 
-  unit3_neg = Deliverable.objects.filter(units='3', analysis='negative').count()
+  unit3_neg = AnalyzedData.objects.filter(deliverable__units='3', analysis='negative').count()
   unit3_neg = int(unit3_neg)
 
-  unit3_nat = Deliverable.objects.filter(units='3', analysis='neutral').count()
+  unit3_nat = AnalyzedData.objects.filter(deliverable__units='3', analysis='neutral').count()
   unit3_nat = int(unit3_nat)
 
   unit3 = Deliverable.objects.filter(units='3')
@@ -148,13 +153,13 @@ def unit3_feedback(request):
 
    # UNIT4
 def unit4_feedback(request):
-  unit4_pos = Deliverable.objects.filter(units='4', analysis='positive').count()
+  unit4_pos = AnalyzedData.objects.filter(deliverable__units='4', analysis='positive').count()
   unit4_pos = int(unit4_pos)
 
-  unit4_neg = Deliverable.objects.filter(units='4', analysis='negative').count()
+  unit4_neg = AnalyzedData.objects.filter(deliverable__units='4', analysis='negative').count()
   unit4_neg = int(unit4_neg)
 
-  unit4_nat = Deliverable.objects.filter(units='4', analysis='neutral').count()
+  unit4_nat = AnalyzedData.objects.filter(deliverable__units='4', analysis='neutral').count()  
   unit4_nat = int(unit4_nat)
 
   unit4 = Deliverable.objects.filter(units='4')

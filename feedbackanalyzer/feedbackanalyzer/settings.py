@@ -129,7 +129,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL = '/deliverables/'
+LOGIN_REDIRECT_URL = '/'
 
 #Specify  when logout should redirect
 LOGOUT_REDIRECT_URL = '/'
